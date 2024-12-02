@@ -1,6 +1,7 @@
 import { formatPrice } from "@/lib/utils";
 import React from "react";
 import { Button } from "./ui/button";
+import SectionAccordian from "./SectionAccordian";
 
 const SelectedCourse = ({ course, handleEnrollNow }: SelectedCourseProps) => {
   return (
@@ -18,7 +19,7 @@ const SelectedCourse = ({ course, handleEnrollNow }: SelectedCourseProps) => {
         <p className="selected-course__description">{course.description}</p>
         <div className="selected-course__sections">
           <h4 className="selected-course__sections-title">Course Content</h4>
-          {/* Accordian */}
+          <SectionAccordian sections={course.sections} />
         </div>
         <div className="selected-course__footer">
           <span className="selected-course__price">

@@ -130,7 +130,7 @@ declare global {
     currentStep: number;
   }
 
-  interface AccordionSectionsProps {
+  interface SectionAccordianProps {
     sections: Section[];
   }
 
