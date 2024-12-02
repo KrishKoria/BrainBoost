@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import CourseCardSearch from "@/components/CourseCardSearch";
+import SelectedCourse from "@/components/SelectedCourse";
 
 const Search = () => {
   const searchParams = useSearchParams();
