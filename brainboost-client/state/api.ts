@@ -19,7 +19,6 @@ const customBaseQuery = async (
       return headers;
     },
   });
-
   try {
     const result: any = await baseQuery(args, api, extraOptions);
 
