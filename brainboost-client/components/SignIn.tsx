@@ -1,7 +1,29 @@
-import { SignIn } from "@clerk/nextjs";
+"use client";
+import { SignIn, useUser } from "@clerk/nextjs";
 import React from "react";
 import { dark } from "@clerk/themes";
+import { useSearchParams } from "next/navigation";
 const SignInComponent = () => {
+  const searchParams = useSearchParams();
+  const { user } = useUser();
+  const isCheckoutPage = searchParams.get("showSignUp") !== null;
+  const courseId = searchParams.get("id");
+
+  const signUpUrl = isCheckoutPage
+    ? `/checkout?step=1&id=${courseId}&showSignUp=true`
+    : "/signup";
+
+  const getRedirctUrl = () => {
+    if (isCheckoutPage) {
+      return `/checkout?step=2&id=${courseId}`;
+    }
+    const userType = user?.publicMetadata?.userType as string;
+    if (userType === "teacher") {
+      return "/teacher/courses";
+    } else {
+      return "/user/courses";
+    }
+  };
   return (
     <SignIn
       appearance={{
@@ -24,8 +46,10 @@ const SignInComponent = () => {
           footerActionLink: "text-primary-750 hover:text-primary-600",
         },
       }}
+      signUpUrl={signUpUrl}
       routing="hash"
       afterSignOutUrl="/"
+      forceRedirectUrl={getRedirctUrl()}
     />
   );
 };
