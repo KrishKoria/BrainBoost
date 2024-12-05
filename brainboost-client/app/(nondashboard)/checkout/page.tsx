@@ -1,6 +1,7 @@
 "use client";
 import CheckoutDetails from "@/components/CheckoutDetails";
 import Loading from "@/components/Loading";
+import PaymentPage from "@/components/PaymentPage";
 import WizardStepper from "@/components/wizardStepper";
 import { useCheckoutNavigation } from "@/hooks/useCheckoutNavigation";
 import { useUser } from "@clerk/nextjs";
