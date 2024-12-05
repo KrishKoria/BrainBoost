@@ -8,7 +8,6 @@ import {
 import { FileText } from "lucide-react";
 
 const SectionAccordian = ({ sections }: SectionAccordianProps) => {
-  console.log(sections);
   return (
     <Accordion type="multiple" className="w-full">
       {sections.map((section) => (

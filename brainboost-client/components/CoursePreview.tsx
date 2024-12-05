@@ -5,7 +5,6 @@ import React from "react";
 import SectionAccordian from "./SectionAccordian";
 
 const CoursePreview = ({ course }: CoursePreviewProps) => {
-  console.log(course);
   const price = formatPrice(course.price);
   return (
     <div className="course-preview">
