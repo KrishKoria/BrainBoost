@@ -13,7 +13,7 @@ import { useCurrentCourse } from "@/hooks/useCurrentCourse";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
 
-const PaymentPageContent = () => {
+const PaymentContent = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [createTransaction] = useCreateTransactionMutation();
@@ -29,17 +29,10 @@ const PaymentPageContent = () => {
       toast.error("Stripe service is not available");
       return;
     }
-
-    const baseUrl = process.env.NEXT_PUBLIC_LOCAL_URL
-      ? `http://${process.env.NEXT_PUBLIC_LOCAL_URL}`
-      : process.env.NEXT_PUBLIC_VERCEL_URL
-        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-        : undefined;
-
     const result = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${baseUrl}/checkout?step=3&courseId=${courseId}`,
+        return_url: `${process.env.NEXT_PUBLIC_STRIPE_REDIRECT_URL}/checkout?step=3&courseId=${courseId}`,
       },
       redirect: "if_required",
     });
@@ -127,12 +120,12 @@ const PaymentPageContent = () => {
   );
 };
 
-const PaymentPage = () => {
+const Payment = () => {
   return (
     <StripeProvider>
-      <PaymentPageContent />
+      <PaymentContent />
     </StripeProvider>
   );
 };
 
-export default PaymentPage;
+export default Payment;
