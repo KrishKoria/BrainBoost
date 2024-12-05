@@ -1,3 +1,5 @@
+"use client";
+import CheckoutDetails from "@/components/CheckoutDetails";
 import Loading from "@/components/Loading";
 import WizardStepper from "@/components/wizardStepper";
 import { useCheckoutNavigation } from "@/hooks/useCheckoutNavigation";
@@ -13,13 +15,13 @@ const CheckoutWizard = () => {
   const renderStep = () => {
     switch (checkoutStep) {
       case 1:
-        return <CheckoutDetailsPage />;
+        return <CheckoutDetails />;
       case 2:
         return <PaymentPage />;
       case 3:
         return <CompletionPage />;
       default:
-        return <CheckoutDetailsPage />;
+        return <CheckoutDetails />;
     }
   };
 
