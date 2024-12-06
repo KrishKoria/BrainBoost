@@ -1,36 +1,172 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BrainBoost
+
+BrainBoost is an online learning platform designed to enhance your skills and knowledge through a variety of courses. The platform supports both students and teachers, providing a comprehensive environment for learning and teaching.
+
+## Features
+
+- **User Authentication**: Secure user authentication using Clerk.
+- **Course Management**: Teachers can create, update, and delete courses.
+- **User Profiles**: Users can view and edit their profiles.
+- **Course Progress Tracking**: Track user progress through courses.
+- **Video Uploads**: Support for uploading and managing course videos.
+- **Notifications**: Manage notification settings for course updates and alerts.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Role-Based Access Control**: Different access levels for students, teachers, and admins.
+- **Payment Integration**: Secure payment processing using Stripe.
+- **Search Functionality**: Easily search for courses using various filters.
+- **Course Reviews and Ratings**: Users can leave reviews and ratings for courses.
+- **Discussion Forums**: Engage in discussions with other students and teachers.
+
+## Project Structure
+
+### Client
+
+The client-side code is located in the `brainboost-client` directory and is built using Next.js, React, and Tailwind CSS.
+
+```
+brainboost-client/
+├── app/
+│   ├── (auth)/
+│   ├── (dashboard)/
+│   ├── (nondashboard)/
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.tsx
+├── components/
+│   ├── AppSidebar.tsx
+│   ├── ChapterModal.tsx
+│   ├── Footer.tsx
+│   ├── Header.tsx
+│   ├── SignUp.tsx
+│   ├── SignIn.tsx
+│   ├── Completion.tsx
+│   ├── LandingPage.tsx
+│   ├── ChaptersSidebar.tsx
+│   ├── SharedNotificationSettings.tsx
+│   ├── CheckoutDetails.tsx
+│   ├── CustomFormField.tsx
+│   ├── ui/
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── dialog.tsx
+│   │   ├── form.tsx
+│   │   ├── input.tsx
+│   │   ├── label.tsx
+│   │   ├── sheet.tsx
+│   │   ├── sidebar.tsx
+│   │   ├── skeleton.tsx
+│   │   ├── tabs.tsx
+│   │   ├── tooltip.tsx
+├── hooks/
+│   ├── useCarousel.ts
+│   ├── useCheckoutNavigation.ts
+│   ├── useCourseProgressData.ts
+│   ├── useCurrentCourse.ts
+│   ├── use-mobile.ts
+├── lib/
+│   ├── providers.ts
+│   ├── schemas.ts
+│   ├── utils.ts
+├── state/
+│   ├── api.ts
+│   ├── index.ts
+├── types/
+│   ├── index.d.ts
+├── public/
+│   ├── ...
+├── next.config.ts
+├── package.json
+├── tsconfig.json
+```
+
+### Server
+
+The server-side code is located in the `brainboost-server` directory and is built using Node.js, Express, and DynamoDB.
+
+```
+brainboost-server/
+├── src/
+│   ├── controllers/
+│   │   ├── courseController.ts
+│   │   ├── userClerkController.ts
+│   ├── models/
+│   │   ├── courseModel.ts
+│   │   ├── userCourseProgressModel.ts
+│   ├── seed/
+│   │   ├── data/
+│   │   │   ├── courses.json
+│   │   ├── seedDynamodb.ts
+│   ├── utils/
+│   │   ├── utils.ts
+│   ├── index.ts
+│   ├── routes/
+│   │   ├── courseRoutes.ts
+│   │   ├── userClerkRoutes.ts
+│   │   ├── transactionRoutes.ts
+│   │   ├── userCourseProgressRoutes.ts
+├── .dockerignore
+├── Dockerfile
+├── package.json
+├── tsconfig.json
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js
+- npm
+
+### Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/KrishKoria/BrainBoost.git
+cd brainboost
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install client dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+cd brainboost-client
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Install server dependencies:
 
-## Learn More
+```sh
+cd ../brainboost-server
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Running the client
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Start the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+cd brainboost-client
+npm run dev
+```
 
-## Deploy on Vercel
+2. Open your browser and navigate to `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Running the Server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Start the server:
+
+```sh
+cd brainboost-server
+npm run dev
+```
+
+2. The server will be running on `http://localhost:3001`.
+
+## Seeding the Database
+
+1. Seed the DynamoDB database
+
+```sh
+cd brainboost-server
+npm run seed
+```
