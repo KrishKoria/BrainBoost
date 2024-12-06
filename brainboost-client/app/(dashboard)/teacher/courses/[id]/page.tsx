@@ -8,17 +8,9 @@ import SectionModal from "@/components/SectionModal";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { courseSchema } from "@/lib/schemas";
-import {
-  centsToDollars,
-  createCourseFormData,
-  uploadAllVideos,
-} from "@/lib/utils";
+import { centsToDollars, createCourseFormData } from "@/lib/utils";
 import { openSectionModal, setSections } from "@/state";
-import {
-  useGetCourseQuery,
-  useUpdateCourseMutation,
-  useGetUploadVideoUrlMutation,
-} from "@/state/api";
+import { useGetCourseQuery, useUpdateCourseMutation } from "@/state/api";
 import { useAppDispatch, useAppSelector } from "@/state/redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, Plus } from "lucide-react";
