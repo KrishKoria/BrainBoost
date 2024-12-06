@@ -6,9 +6,9 @@ import Payment from "@/components/Payment";
 import WizardStepper from "@/components/wizardStepper";
 import { useCheckoutNavigation } from "@/hooks/useCheckoutNavigation";
 import { useUser } from "@clerk/nextjs";
-import React from "react";
+import React, { Suspense } from "react";
 
-const CheckoutWizard = () => {
+const CheckoutWizardContent = () => {
   const { isLoaded } = useUser();
   const { checkoutStep } = useCheckoutNavigation();
 
@@ -32,6 +32,14 @@ const CheckoutWizard = () => {
       <WizardStepper currentStep={checkoutStep} />
       <div className="checkout__content">{renderStep()}</div>
     </div>
+  );
+};
+
+const CheckoutWizard = () => {
+  return (
+    <Suspense fallback={<Loading />}>
+      <CheckoutWizardContent />
+    </Suspense>
   );
 };
 
