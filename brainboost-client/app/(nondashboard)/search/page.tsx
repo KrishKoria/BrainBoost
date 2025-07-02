@@ -90,7 +90,7 @@ const SearchContent = () => {
 const Search = () => {
   return (
     <Suspense fallback={<Loading />}>
-      <SearchContent />;
+      <SearchContent />
     </Suspense>
   );
 };
